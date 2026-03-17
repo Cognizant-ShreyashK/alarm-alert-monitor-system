@@ -16,7 +16,7 @@ public class AlarmSimulator {
     // Runs every 5 minutes (300,000 milliseconds)
     // Tip: While coding and testing your Angular frontend next week, 
     // change this to 10000 (10 seconds) so you don't have to wait 5 minutes to see it work!
-    @Scheduled(fixedRate = 20000) 
+    @Scheduled(fixedRate = 30000) 
     public void generateRandomAlarm() {
         alarmService.triggerRandomExistingAlarm();
     }
