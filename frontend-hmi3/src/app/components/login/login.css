@@ -1,0 +1,177 @@
+/* Full screen centering */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  
+  /* Injected a brighter sky blue (#0ea5e9) to make the movement pop */
+  background: linear-gradient(-45deg, #0f172a, #0ea5e9, #0c4a6e, #1e293b);
+  background-size: 400% 400%;
+  
+  /* THE FIX: Sped up the animation to 4 seconds with a punchy ease-in-out */
+  animation: fastGradient 4s ease-in-out infinite;
+  
+  font-family: 'Inter', 'Open Sans', sans-serif;
+  padding: 20px;
+}
+
+/* Keyframes for the rapid background shift */
+@keyframes fastGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* The Main Card */
+.login-card {
+  background: #ffffff;
+  width: 100%;
+  max-width: 420px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+/* Header Section */
+.login-header {
+  background: #1e293b;
+  color: white;
+  padding: 40px 32px;
+  text-align: center;
+  border-bottom: 4px solid #38bdf8;
+}
+
+.logo-circle {
+  width: 64px;
+  height: 64px;
+  background: rgba(56, 189, 248, 0.1);
+  color: #38bdf8;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8rem;
+  margin: 0 auto 16px auto;
+}
+
+.login-header h2 {
+  margin: 0 0 8px 0;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.login-header p {
+  margin: 0;
+  color: #94a3b8;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Form Section */
+.login-form {
+  padding: 32px;
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #334155;
+  font-size: 0.9rem;
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.input-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #94a3b8;
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding: 12px 12px 12px 40px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #0f172a;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+  background-color: #f8fafc;
+}
+
+.input-wrapper input:focus {
+  outline: none;
+  border-color: #38bdf8;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+}
+
+/* Error Banner */
+.error-banner {
+  background-color: #fef2f2;
+  color: #ef4444;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  margin-bottom: 20px;
+  border-left: 4px solid #ef4444;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Submit Button */
+.btn-login {
+  width: 100%;
+  padding: 14px;
+  background-color: #38bdf8;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.btn-login:hover:not([disabled]) {
+  background-color: #0284c7;
+}
+
+.btn-login[disabled] {
+  background-color: #94a3b8;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Color the icon orange */
+.alert-icon {
+  color: #f97316; 
+  font-size: 2rem;
+  animation: ring 10s infinite ease-in-out;
+}
+
+/* Subtle ringing animation */
+@keyframes ring {
+  0%, 100% { transform: rotate(0deg); }
+  5%, 15% { transform: rotate(30deg); }
+  10%, 20% { transform: rotate(-30deg); }
+  25% { transform: rotate(0deg); }
+}

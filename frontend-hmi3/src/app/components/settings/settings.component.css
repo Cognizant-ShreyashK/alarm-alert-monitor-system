@@ -1,0 +1,35 @@
+.main { flex: 1; display: flex; flex-direction: column; background-color: var(--bg-main); min-height: 100vh; }
+.content { padding: 30px; font-family: 'Open Sans', sans-serif; color: #333; }
+
+/* Main White Card Container */
+.settings-container { background: var(--bg-card); border-radius: 12px; padding: 30px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); max-width: 900px; margin: 0 auto; }
+
+/* Section Headers */
+.settings-section { margin-bottom: 20px; }
+.mt-4 { margin-top: 40px; }
+.section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 15px; border-bottom: 1px solid #f0f0f0; padding-bottom: 15px; }
+.section-header h3 { margin: 0; font-size: 1.1rem; font-weight: 500; color: #444; }
+.text-muted { color: #95a5a6; }
+.text-warning { color: #f39c12; }
+.text-success { color: #2ecc71; } /* Matching the green text in the image */
+
+/* Rows */
+.settings-list { display: flex; flex-direction: column; gap: 15px; }
+.settings-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; }
+.row-info h4 { margin: 0 0 4px 0; font-size: 0.95rem; font-weight: 600; color: var(--text-main); }
+.row-info p { margin: 0; font-size: 0.8rem; color: #888; }
+
+/* Custom Dropdowns */
+.custom-select { padding: 8px 16px; border: 1px solid #e0e0e0; border-radius: 8px; background-color: #f8f9fa; font-size: 0.9rem; color: #333; cursor: pointer; min-width: 150px; outline: none; transition: border-color 0.2s; appearance: none; /* Custom arrow via background image if desired, but default is usually fine */ }
+.custom-select:focus { border-color: #3498db; }
+
+/* Toggle Switch */
+.switch { position: relative; display: inline-block; width: 44px; height: 24px; flex-shrink: 0; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; }
+.slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px; background-color: white; transition: .4s; }
+input:checked + .slider { background-color: #2196f3; /* The blue color from the image */ }
+input:focus + .slider { box-shadow: 0 0 1px #2196f3; }
+input:checked + .slider:before { transform: translateX(20px); }
+.slider.round { border-radius: 34px; }
+.slider.round:before { border-radius: 50%; }

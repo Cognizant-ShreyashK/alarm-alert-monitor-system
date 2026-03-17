@@ -1,0 +1,54 @@
+<div class="login-container">
+  <div class="login-card">
+    
+    <div class="login-header">
+      <div class="logo-circle">
+        <i class="fas fa-bell alert-icon"></i>
+      </div>
+      <h2>Real Time Alert</h2>
+      <p>MONITOR SYSTEM</p>
+    </div>
+
+    <form (ngSubmit)="onLogin()" #loginForm="ngForm" class="login-form">
+      
+      <div class="error-banner" *ngIf="errorMessage">
+        <i class="fas fa-exclamation-circle"></i> {{ errorMessage }}
+      </div>
+
+      <div class="form-group">
+        <label for="username">Username</label>
+        <div class="input-wrapper">
+          <i class="fas fa-user input-icon"></i>
+          <input 
+            type="text" 
+            id="username" 
+            name="username" 
+            [(ngModel)]="username" 
+            required 
+            placeholder="Enter your username"
+            autocomplete="off">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div class="input-wrapper">
+          <i class="fas fa-lock input-icon"></i>
+          <input 
+            type="password" 
+            id="password" 
+            name="password" 
+            [(ngModel)]="password" 
+            required 
+            placeholder="Enter your password">
+        </div>
+      </div>
+
+      <button type="submit" class="btn-login" [disabled]="!loginForm.form.valid || isLoading">
+        <span *ngIf="!isLoading">Secure Login <i class="fas fa-arrow-right"></i></span>
+        <span *ngIf="isLoading"><i class="fas fa-spinner fa-spin"></i> Authenticating...</span>
+      </button>
+      
+    </form>
+  </div>
+</div>

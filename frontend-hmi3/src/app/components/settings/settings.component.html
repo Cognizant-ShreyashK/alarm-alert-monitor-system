@@ -1,0 +1,81 @@
+<div class="main">
+  <app-topbar title="⚙️ System Settings"></app-topbar>
+
+  <div class="content">
+    <div class="settings-container">
+      
+      <div class="settings-section">
+        <div class="section-header">
+          <i class="fas fa-wrench text-muted"></i>
+          <h3>System Configuration</h3>
+        </div>
+        
+        <div class="settings-list">
+          <div class="settings-row">
+            <div class="row-info">
+              <h4>Auto-Refresh Interval</h4>
+              <p>Data polling frequency</p>
+            </div>
+            <div class="row-control">
+              <select [(ngModel)]="autoRefreshInterval" class="custom-select">
+                <option value="5">5 seconds</option>
+                <option value="10">10 seconds</option>
+                <option value="30">30 seconds</option>
+                <option value="60">1 minute</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="settings-row">
+            <div class="row-info">
+              <h4>Theme Mode</h4>
+              <p>UI appearance</p>
+            </div>
+            <div class="row-control">
+              <select [(ngModel)]="themeMode" (change)="onThemeChange()" class="custom-select">
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="settings-section mt-4">
+        <div class="section-header">
+          <i class="fas fa-bell text-warning"></i>
+          <h3>Notifications</h3>
+        </div>
+        
+        <div class="settings-list">
+          <div class="settings-row">
+            <div class="row-info">
+              <h4 class="text-success">Critical Alarms</h4>
+              <p>Alert on critical severity</p>
+            </div>
+            <div class="row-control">
+              <label class="switch">
+                <input type="checkbox" [(ngModel)]="criticalAlarmsAlert">
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="settings-row">
+            <div class="row-info">
+              <h4 class="text-success">Sound Alerts</h4>
+              <p>Audio notification for alarms</p>
+            </div>
+            <div class="row-control">
+              <label class="switch">
+                <input type="checkbox" [(ngModel)]="soundAlerts">
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

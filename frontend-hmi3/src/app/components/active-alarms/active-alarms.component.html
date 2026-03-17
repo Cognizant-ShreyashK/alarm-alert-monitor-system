@@ -1,0 +1,126 @@
+<div class="main">
+  <app-topbar title="⚠️ Active Battery Alarms"></app-topbar>
+
+  <div class="content">
+    <div class="alarms-header">
+      <div class="header-stats">
+        <div class="stat-item high">
+          <span class="stat-number">{{ getSeverityCount("High") }}</span>
+          <span class="stat-label">High</span>
+        </div>
+        <div class="stat-item medium">
+          <span class="stat-number">{{ getSeverityCount("Medium") }}</span>
+          <span class="stat-label">Medium</span>
+        </div>
+        <div class="stat-item low">
+          <span class="stat-number">{{ getSeverityCount("Low") }}</span>
+          <span class="stat-label">Low</span>
+        </div>
+      </div>
+
+      <div class="action-section">
+        <div class="status-summary">
+          <div class="summary-pill raised">
+            <i class="fas fa-exclamation-circle"></i> Raised: <strong>{{ raisedCount }}</strong>
+          </div>
+          <div class="summary-pill acked">
+            <i class="fa-solid fa-check"></i> Acknowledged: <strong>{{ acknowledgedCount }}</strong>
+          </div>
+        </div>
+
+        <button *ngIf="filteredAlarms.length > 0" class="acknowledge-all-btn" (click)="openAllModal()">
+          <i class="fas fa-check-circle"></i> Acknowledge All
+        </button>
+      </div>
+    </div>
+
+    <div class="filters-bar">
+      <div class="search-box">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text" placeholder="Search alarms..." [(ngModel)]="searchTerm" (ngModelChange)="filterAndSortAlarms()" />
+      </div>
+
+      <div class="filter-group">
+        <i class="fas fa-filter filter-icon"></i>
+        <select [(ngModel)]="severityFilter" (ngModelChange)="filterAndSortAlarms()" class="filter-select">
+          <option value="All">All Severities</option>
+          <option value="High">High</option>
+          <option value="Medium">Medium</option>
+          <option value="Low">Low</option>
+        </select>
+      </div>
+
+      <div class="sort-group">
+        <i class="fas fa-sort sort-icon"></i>
+        <select [(ngModel)]="sortBy" (ngModelChange)="filterAndSortAlarms()" class="sort-select">
+          <option value="recent">Most Recent</option>
+          <option value="severity">By Severity</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="alarm-grid">
+      <div *ngIf="filteredAlarms.length === 0" class="no-alarms">
+        <i class="fas fa-check-circle no-alarms-icon"></i>
+        <h3>No Active Alarms</h3>
+        <p>All systems are running smoothly 🎉</p>
+      </div>
+
+      <ng-container *ngIf="filteredAlarms.length > 0">
+        <div *ngFor="let alarm of filteredAlarms; trackBy: trackById" [ngClass]="'alarm-card severity-' + alarm.severity.toLowerCase()">
+          <div class="alarm-header">
+            <div class="alarm-title">
+              <i class="fas fa-exclamation-triangle alarm-icon"></i>
+              <h3>{{ alarm.message }}</h3>
+            </div>
+            <span [ngClass]="'badge ' + alarm.severity.toLowerCase()">{{ alarm.severity }}</span>
+          </div>
+
+          <div class="alarm-body">
+            <div class="alarm-detail">
+              <span class="detail-label">Code:</span> <span class="detail-value">{{ alarm.code }}</span>
+            </div>
+          </div>
+
+          <button class="ack-btn" (click)="openSingleModal(alarm)">
+            <i class="fas fa-check-circle"></i> Acknowledge
+          </button>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
+
+<div class="custom-modal-overlay" *ngIf="showModal">
+  <div class="custom-modal-container">
+    
+    <div class="custom-modal-header">
+      <i class="fas fa-info-circle modal-icon" [ngClass]="{'warning-icon': modalType === 'all'}"></i>
+      <h3 *ngIf="modalType === 'single'">Acknowledge this alarm?</h3>
+      <h3 *ngIf="modalType === 'all'" class="text-danger">Acknowledge ALL active alarms?</h3>
+    </div>
+
+    <div class="custom-modal-body">
+      <ng-container *ngIf="modalType === 'single' && selectedAlarm">
+        <div class="alarm-details-item">
+          <strong>Code:</strong> <span>{{ selectedAlarm.code }}</span>
+        </div>
+        <div class="alarm-details-item">
+          <strong>Message:</strong> <span>{{ selectedAlarm.message }}</span>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="modalType === 'all'">
+        <p class="bulk-warning-text">You are about to clear <strong>{{ filteredAlarms.length }}</strong> alarms from the active board. This action cannot be undone.</p>
+      </ng-container>
+    </div>
+
+    <div class="custom-modal-footer">
+      <button class="btn-cancel" (click)="closeModal()">Cancel</button>
+      <button class="btn-confirm" [ngClass]="{'btn-danger': modalType === 'all'}" (click)="confirmAction()">
+        <i class="fas fa-check"></i> Confirm
+      </button>
+    </div>
+
+  </div>
+</div>

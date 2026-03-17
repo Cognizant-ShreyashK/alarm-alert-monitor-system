@@ -1,0 +1,151 @@
+/* src/app/dashboard/dashboard.component.css */
+
+/* General dashboard container */
+.dashboard-container {
+  /* padding: 30px; */
+  background-color: #f5f6fa; /* Light grey background from the image */
+  color: #333;
+  font-family: 'Open Sans', sans-serif; /* A clean font similar to the reference */
+}
+
+/* Page Header */
+.dashboard-header {
+  margin-bottom: 30px;
+}
+
+.dashboard-header h1 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
+}
+
+/* --- SUMMARY CARDS --- */
+.summary-section {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.summary-card {
+  flex: 1;
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* Soft shadow from reference */
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.icon-container {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  color: white;
+}
+
+/* Colors for specific card icons */
+.total-icon {
+  background-color: #bbdefb; /* Light blue */
+  color: #1976d2;
+}
+
+.active-icon {
+  background-color: #ffcdd2; /* Light red */
+  color: #d32f2f;
+}
+
+.cleared-icon {
+  background-color: #c8e6c9; /* Light green */
+  color: #388e3c;
+}
+
+.critical-icon {
+  background-color: #fff9c4; /* Light yellow */
+  color: #fbc02d;
+}
+
+.stats-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-value {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #777;
+  text-transform: uppercase;
+}
+
+/* --- CHART CARDS --- */
+.chart-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.chart-card {
+  background-color: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.chart-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.chart-card-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Badges next to titles */
+.badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-transform: uppercase;
+}
+
+.real-time-badge {
+  background-color: #e3f2fd;
+  color: #2196f3;
+}
+
+.last-24h-badge {
+  background-color: #e8eaf6;
+  color: #3f51b5;
+}
+
+/* Chart container size control */
+.chart-container {
+  position: relative;
+  /* height will define the chart height, maintainAspectRatio is false in TS */
+}
+
+.donut-chart-container {
+  height: 250px;
+}
+
+.bar-chart-container {
+  height: 300px;
+}

@@ -1,0 +1,92 @@
+<div class="main">
+  <app-topbar title="Alarm History"></app-topbar>
+
+  <div class="content">
+    
+    <div class="history-banner">
+      <div class="banner-title">
+        <i class="fas fa-history banner-icon"></i>
+        <h2>Cleared Alarms</h2>
+      </div>
+
+      <button class="btn-clear-history" (click)="openClearModal()" *ngIf="filteredAlarms.length > 0">
+        <i class="fas fa-trash-alt"></i> Clear All History
+      </button>
+    </div>
+
+    <div class="filters-card">
+      <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input type="text" placeholder="Search records..." [(ngModel)]="searchTerm" (ngModelChange)="filterAlarms()">
+      </div>
+      
+      <div class="filter-dropdown">
+        <select [(ngModel)]="severityFilter" (ngModelChange)="filterAlarms()" class="custom-select">
+          <option value="All">All Severity</option>
+          <option value="High">High</option>
+          <option value="Medium">Medium</option>
+          <option value="Low">Low</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="table-container">
+      <table class="history-table">
+        <thead>
+          <tr>
+            <th>CODE</th>
+            <th>MESSAGE</th>
+            <th>SEVERITY</th>
+            <th>STATUS</th>
+            <th>CLEARED AT</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="filteredAlarms.length === 0">
+            <td colspan="5" class="empty-state">No matching cleared alarms found.</td>
+          </tr>
+
+          <tr *ngFor="let alarm of filteredAlarms">
+            <td class="code-cell"><span class="code-badge">{{ alarm.code }}</span></td>
+            <td class="message-cell">{{ alarm.message }}</td>
+            <td>
+              <span class="severity-badge" [ngClass]="alarm.severity.toLowerCase()">
+                {{ alarm.severity | uppercase }}
+              </span>
+            </td>
+            <td>
+              <span class="status-badge cleared">
+                <i class="fas fa-check-circle"></i> {{ alarm.status }}
+              </span>
+            </td>
+            <td class="time-cell">{{ alarm.clearedAt }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+<div class="custom-modal-overlay" *ngIf="showClearModal">
+  <div class="custom-modal-container">
+    
+    <div class="custom-modal-header">
+      <i class="fas fa-exclamation-triangle modal-icon warning-icon"></i>
+      <h3 class="text-danger">Wipe Alarm History?</h3>
+    </div>
+
+    <div class="custom-modal-body">
+      <p class="bulk-warning-text">You are about to permanently delete <strong>{{ allClearedAlarms.length }}</strong> historical records from the database. This action cannot be undone.</p>
+    </div>
+
+    <div class="custom-modal-footer">
+      <button class="btn-cancel" (click)="closeClearModal()" [disabled]="isClearing">Cancel</button>
+      <button class="btn-confirm btn-danger" (click)="confirmClearHistory()" [disabled]="isClearing">
+        <span *ngIf="!isClearing"><i class="fas fa-trash-alt"></i> Delete Forever</span>
+        <span *ngIf="isClearing"><i class="fas fa-spinner fa-spin"></i> Deleting...</span>
+      </button>
+    </div>
+
+  </div>
+</div>
