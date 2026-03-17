@@ -2,16 +2,6 @@
 
 A robust, full-stack Human-Machine Interface (HMI) designed for real-time industrial and system alarm monitoring. This application provides a high-performance, edge-to-edge "Deep Onyx" dark-themed UI for operators to track, filter, and acknowledge critical system events, powered by a Spring Boot backend and a MySQL relational database.
 
-## 🚀 Features
-
-| Module | Key Capabilities |
-| :--- | :--- |
-| **Secure Authentication** | Route-guarded login system with custom branding and animated UI elements. |
-| **Live Dashboard** | Real-time statistical overview of total, active, cleared, and critical alarms. |
-| **Active Alarms Panel** | Dynamic grid/table view of ongoing issues with severity color-coding (High, Medium, Low) and bulk-acknowledge functionality. |
-| **Historical Log** | Persistent, searchable, and filterable audit trail of all resolved and acknowledged system events. |
-| **Responsive UI/UX** | Collapsible edge-to-edge sidebar, live 24-hour clock, and custom modal dialogues built without external CSS libraries. |
-| **Automated Event Engine** | Spring Boot scheduled tasks simulate real-time sensor data and background hardware events. |
 
 ## 🛠️ Technology Stack
 
