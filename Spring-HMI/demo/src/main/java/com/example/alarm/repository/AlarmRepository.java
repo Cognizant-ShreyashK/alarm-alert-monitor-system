@@ -24,3 +24,4 @@ public interface AlarmRepository extends JpaRepository<Alarm, Integer> {
     // Counts the total number of cleared (acknowledged) alarms
     long countByIsAcknowledgedTrue();
 }
+

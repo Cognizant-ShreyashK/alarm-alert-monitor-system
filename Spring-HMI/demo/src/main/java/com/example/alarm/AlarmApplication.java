@@ -8,6 +8,7 @@ import org.springframework.scheduling.annotation.EnableScheduling; // Add this
 @EnableScheduling // Add this to enable background tasks
 public class AlarmApplication {
     public static void main(String[] args) {
+        // TESTING GIT CHANGES
         SpringApplication.run(AlarmApplication.class, args);
         System.out.println("=========================================================\\n\" +\r\n" + //
                         "\"\\t Backend is READY! \\n\" +\r\n" + //
