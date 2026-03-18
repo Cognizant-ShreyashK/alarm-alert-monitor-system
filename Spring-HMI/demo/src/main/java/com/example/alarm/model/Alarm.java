@@ -17,7 +17,7 @@ public class Alarm {
     private String message;
     
     @Column(nullable = false)
-    private String severity; // e.g., "High", "Medium", "Low"
+    private String severity; 
     
     @Column(nullable = false)
     private boolean isAcknowledged;

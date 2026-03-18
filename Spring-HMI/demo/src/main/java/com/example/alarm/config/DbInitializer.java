@@ -15,7 +15,6 @@ public class DbInitializer implements CommandLineRunner {
     private final AlarmRepository alarmRepository;
     private final Random random = new Random();
 
-    // We only need the repository here now, not the AlarmService
     public DbInitializer(AlarmRepository alarmRepository) {
         this.alarmRepository = alarmRepository;
     }
@@ -36,12 +35,10 @@ public class DbInitializer implements CommandLineRunner {
                 // Format code as AUTO-001, AUTO-002, etc.
                 String code = String.format("AUTO-%03d", i); 
                 
-                // IMPORTANT FIX: Create the alarm directly and set isAcknowledged to TRUE (Cleared)
                 Alarm alarm = new Alarm(code, message, severity, true);
                 initialAlarms.add(alarm);
             }
             
-            // Save all 30 cleared alarms to the database at once (much faster!)
             alarmRepository.saveAll(initialAlarms);
             
             System.out.println("Console: Successfully seeded 30 cleared alarms. Ready for scheduler to take over.");

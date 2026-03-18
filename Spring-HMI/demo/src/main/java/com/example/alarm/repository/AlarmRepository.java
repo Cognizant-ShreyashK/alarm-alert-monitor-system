@@ -12,7 +12,7 @@ public interface AlarmRepository extends JpaRepository<Alarm, Integer> {
     // Retrieves all alarms where isAcknowledged is false (Active alarms)
     List<Alarm> findByIsAcknowledgedFalse();
     
-    // Retrieves all alarms where isAcknowledged is true (Cleared alarms) - ADD THIS LINE
+    // Retrieves all alarms where isAcknowledged is true (Cleared alarms)
     List<Alarm> findByIsAcknowledgedTrue();
     
     // Retrieves alarms filtered by their severity (High, Medium, Low)
