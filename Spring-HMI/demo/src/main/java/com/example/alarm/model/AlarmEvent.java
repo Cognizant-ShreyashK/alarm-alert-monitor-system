@@ -18,9 +18,9 @@ public class AlarmEvent {
     private LocalDateTime timestamp;
     
     @Column(nullable = false)
-    private String state; // e.g., "Active" or "Cleared"
+    private String state; 
 
-    // Default Constructor (Required by Hibernate)
+    // Default Constructor
     public AlarmEvent() {
     }
 

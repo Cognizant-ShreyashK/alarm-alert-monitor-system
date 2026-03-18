@@ -10,7 +10,7 @@ import { Alarm } from '../../models/alarm.model';
 @Component({
   selector: 'app-active-alarms',
   standalone: true,
-  imports: [CommonModule, FormsModule, TopbarComponent], 
+  imports: [CommonModule, FormsModule, TopbarComponent],
   templateUrl: './active-alarms.component.html',
   styleUrls: ['./active-alarms.component.css']
 })

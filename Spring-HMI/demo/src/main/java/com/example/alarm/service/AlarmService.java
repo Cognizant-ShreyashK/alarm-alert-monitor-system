@@ -29,7 +29,7 @@ public class AlarmService {
         return alarmRepository.findByIsAcknowledgedFalse();
     }
 
-    // OOP: Raise method (Used only manually or by our initial seeder now)
+    // OOP: Raise method
     @Transactional
     public Alarm raiseAlarm(String code, String message, String severity) {
         Alarm alarm = new Alarm(code, message, severity, false);
@@ -66,7 +66,6 @@ public class AlarmService {
             .orElse(false); // If no 'Active' event was found, return false
     }
 
-    // Add this to your AlarmService class
     @Transactional
     public void triggerRandomExistingAlarm() {
         // 1. Fetch all alarms that are currently cleared (isAcknowledged = true)
@@ -133,17 +132,12 @@ public class AlarmService {
                 .collect(Collectors.toList());
     }
 
-    // ==========================================
-    // NEW: MISSING METHOD ADDED HERE
-    // ==========================================
     @Transactional
     public void clearAllHistory() {
         // Fetch all events
         Iterable<AlarmEvent> allEvents = alarmEventRepository.findAll();
         
         // Delete ONLY the events that are marked as "Cleared". 
-        // This empties the history page, but leaves the hidden Alarm models 
-        // so the random simulator can still use them!
         for (AlarmEvent event : allEvents) {
             if ("Cleared".equalsIgnoreCase(event.getState())) {
                 alarmEventRepository.delete(event);
